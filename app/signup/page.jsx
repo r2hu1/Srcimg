@@ -10,7 +10,7 @@ const Signup = () => {
             <Header />
             <section className="mt-20 mb-20 mx-8">
                 <div className="max-w-md flex flex-col justify-center items-center m-auto sm:max-w-sm">
-                    <h1 className="text-3xl font-bold mb-8 font-sans">Create your account<span className="text-primary">.</span></h1>
+                    <h1 className="text-3xl font-bold mb-8">Create your account<span className="text-primary">.</span></h1>
                     <form className="grid gap-2 w-full">
                         <Input type="email" placeholder="Email address" className="h-12 pl-4 text-base"></Input>
                         <Input type="password" placeholder="password" className="h-12 pl-4 text-base"></Input>
