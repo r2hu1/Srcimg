@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
@@ -7,7 +5,6 @@ import Link from "next/link";
 const Login = () => {
     return (
         <div>
-            <Header />
             <section className="mt-20 mb-20 mx-8">
                 <div className="max-w-md flex flex-col justify-center items-center m-auto sm:max-w-sm">
                     <h1 className="text-3xl font-bold mb-8">Welcome back<span className="text-primary">.</span></h1>
@@ -19,7 +16,6 @@ const Login = () => {
                     </form>
                 </div>
             </section>
-            <Footer />
         </div>
     );
 };
