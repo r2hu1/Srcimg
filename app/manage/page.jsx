@@ -25,32 +25,32 @@ const Manage = () => {
                             <div className="rounded-lg w-full p-3">
                                 <img className="p-1 rounded-lg h-40 w-full border mb-3" src="https://i.postimg.cc/HsmwGfkH/Screenshot-2023-12-08-235237.png" />
                                 <div className="flex gap-1 w-full">
-                                    <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]"/></Button>
-                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]"/></Button>
+                                    <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
+                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]" /></Button>
                                 </div>
                             </div>
 
                             <div className="rounded-lg w-full p-3">
                                 <img className="p-1 rounded-lg h-40 w-full border mb-3" src="https://i.postimg.cc/HsmwGfkH/Screenshot-2023-12-08-235237.png" />
                                 <div className="flex gap-1 w-full">
-                                    <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]"/></Button>
-                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]"/></Button>
+                                    <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
+                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]" /></Button>
                                 </div>
                             </div>
 
                             <div className="rounded-lg w-full p-3">
                                 <img className="p-1 rounded-lg h-40 w-full border mb-3" src="https://i.postimg.cc/HsmwGfkH/Screenshot-2023-12-08-235237.png" />
                                 <div className="flex gap-1 w-full">
-                                    <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]"/></Button>
-                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]"/></Button>
+                                    <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
+                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]" /></Button>
                                 </div>
                             </div>
 
                             <div className="rounded-lg w-full p-3">
                                 <img className="p-1 rounded-lg h-40 w-full border mb-3" src="https://i.postimg.cc/HsmwGfkH/Screenshot-2023-12-08-235237.png" />
                                 <div className="flex gap-1 w-full">
-                                    <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]"/></Button>
-                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]"/></Button>
+                                    <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
+                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]" /></Button>
                                 </div>
                             </div>
                         </div>
