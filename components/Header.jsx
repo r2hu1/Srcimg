@@ -29,16 +29,16 @@ const Header = () => {
                             <div className="grid mb-8 mt-20">
                                 <ul className="text-md text-center grid gap-4 w-full">
                                     <li>
-                                        <Button className="w-full" asChild variant="ghost"><a href="#">Github Repo</a></Button>
+                                        <Button className="w-full" asChild variant="ghost"><a href="https://github.com/r2hu1/Srcimg">Github Repo</a></Button>
                                     </li>
                                     <li>
-                                        <Button className="w-full" asChild variant="ghost"><a href="#">Contribution Guide</a></Button>
+                                        <Button className="w-full" asChild variant="ghost"><a href="https://github.com/r2hu1/Srcimg">Contribution Guide</a></Button>
                                     </li>
                                     <li>
-                                        <Button className="w-full" asChild variant="ghost"><a href="#">Api Guide</a></Button>
+                                        <Button className="w-full" asChild variant="ghost"><a href="https://github.com/r2hu1/Srcimg">Api Guide</a></Button>
                                     </li>
                                     <li>
-                                        <Button className="w-full" asChild variant="ghost"><a href="#">Developer</a></Button>
+                                        <Button className="w-full" asChild variant="ghost"><a href="https://rahul.eu.org">Developer</a></Button>
                                     </li>
                                 </ul>
                             </div>
