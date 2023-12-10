@@ -84,15 +84,15 @@ const Upload = () => {
     };
 
     return (
-        <section className="mt-20 mb-20">
+        <section className="mt-20 mb-20 w-full h-screen">
             <div className="md:mx-40 mx-9 max-w-md">
                 <div className="text-xs flex items-center gap-2 select-none">
                     <Link href="/" className="hover:underline hover:text-primary">Srcimg</Link> <span className="text-lg font-thin">/</span> Upload
                 </div>
-                <form className="mt-7" onSubmit={uploadImage}>
+                <form className="mt-7 m-auto" onSubmit={uploadImage}>
                     <input onChange={handleFileInput} hidden type="file" accept="image/png, image/jpeg, image/jpg, image/webp" id="fileInput" />
                     <label htmlFor="fileInput">
-                        <div className="mt-4 h-[120px] w-full border-2 rounded flex justify-center items-center text-sm cursor-pointer">Choose Image To Upload</div>
+                        <div className="mt-4 h-[150px] w-full border-2 rounded flex justify-center items-center text-sm cursor-pointer">Choose Image To Upload</div>
                     </label>
                     <p className="text-xs mt-1 text-center opacity-80">Supported: png, jpg, jpeg, webp</p>
                     <div className="min-h-[50px] border border-dashed rounded mt-6">

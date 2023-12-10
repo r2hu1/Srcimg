@@ -46,27 +46,31 @@ const Manage = () => {
 
 
     return (
-        <section className="mt-20 mb-20">
+        <section className="mt-20 mb-20 w-full h-screen">
             <div className="md:mx-40 mx-8 max-w-md">
                 <div className="text-xs flex items-center gap-2 select-none">
                     <Link href="/" className="hover:underline hover:text-primary">Srcimg</Link> <span className="text-lg font-thin">/</span> Manage
                 </div>
-                <div className="mt-7">
+                <div className="mt-7 mx-auto">
                     {!clicked ? (
                         <div>
-                            <div className="mt-4 h-[120px] w-full border rounded flex justify-center items-center text-sm"><Button variant="link" className="no-underline" onClick={getFile}>Click To Refresh <BiLoaderAlt className="h-5 w-5 animate-spin ml-2" /></Button></div>
+                            <div className="mt-4 h-[120px] w-full border rounded flex justify-center items-center text-sm"><Button variant="link" className="no-underline" onClick={getFile}>Click To Refresh</Button></div>
                         </div>
                     ) : (
                         <div className="flex flex-wrap gap-2">
                             {
-                                files.map((file, index) => (
+                                files.length > 0 ? files.map((file, index) => (
                                     <div key={index} className="rounded-lg w-full p-3">
                                         <img className="p-1 rounded-lg h-40 w-full border mb-3" src={file} alt={"Image"} />
                                         <div className="flex gap-1 w-full">
                                             <Button className="w-full flex gap-1 items-center justify-center outline-none" onClick={() => {navigator.clipboard.writeText(file); toast({title: "Link Copied"});}}>Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
                                         </div>
                                     </div>
-                                ))
+                                )) : (
+                                    <div className="w-full h-[120px] flex items-center justify-center">
+                                        <BiLoaderAlt className="h-5 w-5 animate-spin ml-2" />
+                                    </div>
+                                )
                             }
                         </div>
                     )}
