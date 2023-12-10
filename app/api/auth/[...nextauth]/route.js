@@ -32,7 +32,7 @@ export const authOptions = {
     }),
   ],
   session: {
-    strategy: "jwt",
+    strategy: "openssl",
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {

@@ -19,6 +19,7 @@ const Signup = () => {
     }
 
     const regesterUser = async (e) => {
+        e.preventDefault();
         const vEmail = validateEmail(e.target[0].value);
         if (!vEmail) {
             toast({
@@ -28,7 +29,14 @@ const Signup = () => {
             });
             return;
         }
-        e.preventDefault();
+        if(e.target[1].value.length < 8){
+            toast({
+                title: "Error",
+                description: "Password must be at least 8 characters",
+                variant: "destructive",
+            });
+            return;
+        }
         const res = await fetch("/api/auth/register", {
             method: "POST",
             headers: {
