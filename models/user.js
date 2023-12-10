@@ -9,8 +9,10 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-        unique: true,
     },
+    files:{
+        type: Object,
+    }
 });
 
 const User = models.User || model("User", userSchema);

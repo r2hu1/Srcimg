@@ -2,14 +2,34 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Signup = () => {
     const { toast } = useToast();
+    const router = useRouter();
+    const { data } = useSession();
+    if (data) router.push("upload");
 
-    const regesterUser = (e) => {
+    const validateEmail = (email) => {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    const regesterUser = async (e) => {
+        const vEmail = validateEmail(e.target[0].value);
+        if (!vEmail) {
+            toast({
+                title: "Error",
+                description: "Invalid Email",
+                variant: "destructive",
+            });
+            return;
+        }
         e.preventDefault();
-        fetch("/api/auth/create", {
+        const res = await fetch("/api/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -18,27 +38,24 @@ const Signup = () => {
                 email: e.target[0].value,
                 password: e.target[1].value,
             }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                if(data.email == e.target[0].value){
-                    toast({
-                        title: "Signup Successful",
-                    });
-                    // setUemail(e.target[0].value);
-                    // setUpassword(e.target[1].value);
-                    // setLogged(true);
-                }
-                else{
-                    toast({
-                        title: "Error",
-                        description: data.message,
-                        variant: "destructive",
-                    })
-                }
+        });
+
+        const data = await res.json();
+        console.log(data);
+        if (data.email == e.target[0].value) {
+            toast({
+                title: "Signup Successful",
             });
+            router.push("/login");
+        } else {
+            toast({
+                title: "Error",
+                description: data.message,
+                variant: "destructive",
+            });
+        }
     };
+
     return (
         <div>
             <section className="mt-20 mb-20 mx-8">

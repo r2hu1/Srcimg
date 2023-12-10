@@ -57,6 +57,23 @@ const Upload = () => {
         if (uploadedImageData.secure_url.length > 0 || uploadedImageData.secure_url != undefined) {
             setFile(uploadedImageData.secure_url);
             setUploadedb(true);
+            fetch("/api/file/update",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    file: uploadedImageData.secure_url,
+                    email:"22@rahul.eu.org"
+                })
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
         }
         setIsUploading(false);
     };
@@ -70,10 +87,10 @@ const Upload = () => {
                 <form className="mt-7" onSubmit={uploadImage}>
                     <input onChange={handleFileInput} hidden type="file" accept="image/png, image/jpeg, image/jpg, image/webp" id="fileInput" />
                     <label htmlFor="fileInput">
-                        <div className="mt-4 h-[120px] w-full border rounded flex justify-center items-center text-sm">Choose Image To Upload</div>
+                        <div className="mt-4 h-[120px] w-full border-2 rounded flex justify-center items-center text-sm cursor-pointer">Choose Image To Upload</div>
                     </label>
                     <p className="text-xs mt-1 text-center opacity-80">Supported: png, jpg, jpeg, webp</p>
-                    <div className="min-h-[50px] border border-dashed rounded mt-5">
+                    <div className="min-h-[50px] border border-dashed rounded mt-6">
                         {!file ? (
                             <p className="text-sm text-center mt-[14px]">
                                 No files choosen

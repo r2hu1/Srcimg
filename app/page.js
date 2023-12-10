@@ -2,9 +2,12 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AiOutlineEnter } from "react-icons/ai";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 
-export default function Page() {
+export default async function Page() {
+  const session = await getServerSession(authOptions);
   return (
     <section className="mt-20 mb-20">
       <div className="md:mx-40 mx-9 max-w-md">
@@ -23,7 +26,7 @@ export default function Page() {
         </p>
         <div className="flex gap-2 mt-8">
           <Button asChild><Link href="/login" className="flex items-center justify-center gap-1">Get Started <AiOutlineEnter /></Link></Button>
-          <Button asChild variant="outline"><Link href="/login" className="flex items-center justify-center gap-1">View Demo</Link></Button>
+          <Button asChild variant="outline"><a href="https://github.com/r2hu1/Srcimg">Github</a></Button>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegCopy } from "react-icons/fa6";
+import { useSession } from "next-auth/react";
 
 const Manage = () => {
     const [files, setfiles] = useState([""]);
@@ -26,7 +27,6 @@ const Manage = () => {
                                 <img className="p-1 rounded-lg h-40 w-full border mb-3" src="https://i.postimg.cc/HsmwGfkH/Screenshot-2023-12-08-235237.png" />
                                 <div className="flex gap-1 w-full">
                                     <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
-                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]" /></Button>
                                 </div>
                             </div>
 
@@ -34,7 +34,6 @@ const Manage = () => {
                                 <img className="p-1 rounded-lg h-40 w-full border mb-3" src="https://i.postimg.cc/HsmwGfkH/Screenshot-2023-12-08-235237.png" />
                                 <div className="flex gap-1 w-full">
                                     <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
-                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]" /></Button>
                                 </div>
                             </div>
 
@@ -42,7 +41,6 @@ const Manage = () => {
                                 <img className="p-1 rounded-lg h-40 w-full border mb-3" src="https://i.postimg.cc/HsmwGfkH/Screenshot-2023-12-08-235237.png" />
                                 <div className="flex gap-1 w-full">
                                     <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
-                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]" /></Button>
                                 </div>
                             </div>
 
@@ -50,7 +48,6 @@ const Manage = () => {
                                 <img className="p-1 rounded-lg h-40 w-full border mb-3" src="https://i.postimg.cc/HsmwGfkH/Screenshot-2023-12-08-235237.png" />
                                 <div className="flex gap-1 w-full">
                                     <Button className="w-full flex gap-1 items-center justify-center">Copy Link<FaRegCopy className="h-[15px] w-[15px]" /></Button>
-                                    <Button className="w-full flex gap-1 items-center justify-center" variant="destructive">Delete <MdDeleteOutline className="h-[16px] w-[16px]" /></Button>
                                 </div>
                             </div>
                         </div>

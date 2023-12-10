@@ -4,43 +4,42 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast"
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Login = () => {
-    const [logged,setLogged] = useState(false);
-    const [uEmail,setUemail] = useState("");
-    const [uPassword,setUpassword] = useState("");
+    const router = useRouter();
     const { toast } = useToast();
+    const { data } = useSession();
+    if(data) router.push("upload");
 
-    const loginUser = (e) => {
+    const loginUser = async (e) => {
         e.preventDefault();
-        fetch("/api/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: e.target[0].value,
+        try {
+            const res = await signIn("credentials", {
+                email : e.target[0].value,
                 password: e.target[1].value,
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if(data.email == e.target[0].value){
-                    toast({
-                        title: "Login Successful",
-                    });
-                    setUemail(e.target[0].value);
-                    setUpassword(e.target[1].value);
-                    setLogged(true);
-                }
-                else{
-                    toast({
-                        title: "Error",
-                        description: data.message,
-                        variant: "destructive",
-                    })
-                }
+                redirect: false,
             });
+
+            console.log(res);
+            if (res.error) {
+                toast({
+                    title: "Error",
+                    description: "User not found",
+                    variant: "destructive",
+                });
+                return;
+            }
+
+            toast({
+                title: "Login Successful",
+            });
+            router.replace("upload");
+        } catch (error) {
+            console.log(error);
+        }
     };
     return (
         <div>
