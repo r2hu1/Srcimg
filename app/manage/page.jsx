@@ -46,12 +46,12 @@ const Manage = () => {
 
 
     return (
-        <section className="mt-20 mb-20 w-full h-screen">
+        <section className="mt-20 w-full h-screen bg-background">
             <div className="md:mx-40 mx-8 max-w-md">
                 <div className="text-xs flex items-center gap-2 select-none">
                     <Link href="/" className="hover:underline hover:text-primary">Srcimg</Link> <span className="text-lg font-thin">/</span> Manage
                 </div>
-                <div className="mt-7 mx-auto">
+                <div className="mt-7 mx-auto h-fit scroll-m-1 overflow-y-scroll">
                     {!clicked ? (
                         <div>
                             <div className="mt-4 h-[120px] w-full border rounded flex justify-center items-center text-sm"><Button variant="link" className="no-underline" onClick={getFile}>Click To Refresh</Button></div>

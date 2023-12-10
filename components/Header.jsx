@@ -21,7 +21,7 @@ import { useSession } from "next-auth/react";
 const Header = () => {
     const { data } = useSession();
     return (
-        <header className="h-20 border-none flex items-center bg-white">
+        <header className="bg-background h-20 border-b flex items-center">
             <div className="flex items-center justify-between w-full md:mx-14 mx-7">
                 <Link href="/">
                     <h1 className="text-3xl font-bold select-none cursor-pointer"><span className="text-primary">Src</span>img<span className="text-primary">.</span></h1>

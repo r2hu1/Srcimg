@@ -52,8 +52,7 @@ const Upload = () => {
         const uploadedImageData = await uploadResponse.json();
         toast({
             title: "Image Uploaded",
-            description: "Your image has been uploaded successfully.",
-            status: "success",
+            description: "Your image has been uploaded successfully.",            
         });
         console.log(uploadedImageData);
         if (uploadedImageData.secure_url.length > 0 || uploadedImageData.secure_url != undefined) {
@@ -84,7 +83,7 @@ const Upload = () => {
     };
 
     return (
-        <section className="mt-20 mb-20 w-full h-screen">
+        <section className="mt-20 mb-20 w-full h-screen bg-background">
             <div className="md:mx-40 mx-9 max-w-md">
                 <div className="text-xs flex items-center gap-2 select-none">
                     <Link href="/" className="hover:underline hover:text-primary">Srcimg</Link> <span className="text-lg font-thin">/</span> Upload
