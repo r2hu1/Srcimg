@@ -7,16 +7,19 @@ import { useToast } from "@/components/ui/use-toast"
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { RiLoader4Fill } from "react-icons/ri";
 
 const Login = () => {
     const router = useRouter();
     const { toast } = useToast();
     const { data } = useSession();
+    const [logging,setLogging] = useState(false);
     if(data) router.push("upload");
 
     const loginUser = async (e) => {
         e.preventDefault();
         try {
+            setLogging(true);
             const res = await signIn("credentials", {
                 email : e.target[0].value,
                 password: e.target[1].value,
@@ -30,15 +33,18 @@ const Login = () => {
                     description: "User not found",
                     variant: "destructive",
                 });
+                setLogging(false);
                 return;
             }
 
             toast({
                 title: "Login Successful",
             });
+            setLogging(false);
             router.replace("upload");
         } catch (error) {
             console.log(error);
+            setLogging(false);
         }
     };
     return (
@@ -49,7 +55,7 @@ const Login = () => {
                     <form onSubmit={loginUser} className="grid gap-2 w-full">
                         <Input type="email" placeholder="Email address" className="h-12 pl-4 text-base"></Input>
                         <Input type="password" placeholder="password" className="h-12 pl-4 text-base"></Input>
-                        <Button className="mt-4 h-12">Login</Button>
+                        <Button className="mt-4 h-12" disabled={logging}>{logging ? (<RiLoader4Fill className="w-5 h-5 animate-spin"/>) : "Login"}</Button>
                         <p className="text-sm text-center mt-7">Don't have an account? <Link className="text-primary hover:underline" href="/signup">Sign up</Link></p>
                     </form>
                 </div>

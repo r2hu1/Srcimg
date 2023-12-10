@@ -6,11 +6,13 @@ import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { RiLoader4Fill } from "react-icons/ri";
 
 const Signup = () => {
     const { toast } = useToast();
     const router = useRouter();
     const { data } = useSession();
+    const [signing, setSigning] = useState(false);
     if (data) router.push("upload");
 
     const validateEmail = (email) => {
@@ -20,6 +22,7 @@ const Signup = () => {
 
     const regesterUser = async (e) => {
         e.preventDefault();
+        setSigning(true);
         const vEmail = validateEmail(e.target[0].value);
         if (!vEmail) {
             toast({
@@ -27,6 +30,7 @@ const Signup = () => {
                 description: "Invalid Email",
                 variant: "destructive",
             });
+            setSigning(false);
             return;
         }
         if(e.target[1].value.length < 8){
@@ -35,6 +39,7 @@ const Signup = () => {
                 description: "Password must be at least 8 characters",
                 variant: "destructive",
             });
+            setSigning(false);
             return;
         }
         const res = await fetch("/api/auth/register", {
@@ -49,11 +54,12 @@ const Signup = () => {
         });
 
         const data = await res.json();
-        console.log(data);
         if (data.email == e.target[0].value) {
+            setSigning(true);
             toast({
                 title: "Signup Successful",
             });
+            setSigning(false);
             router.push("/login");
         } else {
             toast({
@@ -61,6 +67,7 @@ const Signup = () => {
                 description: data.message,
                 variant: "destructive",
             });
+            setSigning(false);
         }
     };
 
@@ -72,7 +79,7 @@ const Signup = () => {
                     <form className="grid gap-2 w-full" onSubmit={regesterUser}>
                         <Input type="email" placeholder="Email address" className="h-12 pl-4 text-base"></Input>
                         <Input type="password" placeholder="password" className="h-12 pl-4 text-base"></Input>
-                        <Button className="mt-4 h-12">Signup</Button>
+                        <Button className="mt-4 h-12" disabled={signing}>{signing ? (<RiLoader4Fill className="w-5 h-5 animate-spin"/>) : "Signup"}</Button>
                         <p className="text-sm text-center mt-7">Already have an account? <Link className="text-primary hover:underline" href="/login">Login</Link></p>
                     </form>
                 </div>
