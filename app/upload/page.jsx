@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { BiLoaderAlt } from "react-icons/bi";
 import { useToast } from "@/components/ui/use-toast"
+import { useSession } from "next-auth/react";
 
 
 
@@ -15,6 +16,7 @@ const Upload = () => {
     const [IsUploading, setIsUploading] = useState(false);
     const [uploadedb, setUploadedb] = useState(false);
     const { toast } = useToast();
+    const { data: userData } = useSession();
 
     const handleFileInput = (e) => {
         e.preventDefault();
@@ -28,7 +30,7 @@ const Upload = () => {
 
     const uploadImage = async (e) => {
         e.preventDefault();
-        if(!file) return;
+        if (!file) return;
         setIsUploading(true);
 
         const uploadResponse = await fetch(
@@ -53,27 +55,30 @@ const Upload = () => {
             description: "Your image has been uploaded successfully.",
             status: "success",
         });
-        console.log(uploadedImageData.secure_url);
+        console.log(uploadedImageData);
         if (uploadedImageData.secure_url.length > 0 || uploadedImageData.secure_url != undefined) {
             setFile(uploadedImageData.secure_url);
             setUploadedb(true);
-            fetch("/api/file/update",{
+            let string = uploadedImageData.secure_url;
+            let cutString = string.split("image/upload")[1];
+
+            fetch("/api/file/update", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    file: uploadedImageData.secure_url,
-                    email:"22@rahul.eu.org"
+                    file: cutString,
+                    email: userData.user.email
                 })
             })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         }
         setIsUploading(false);
     };

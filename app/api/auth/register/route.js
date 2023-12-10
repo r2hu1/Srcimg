@@ -8,7 +8,7 @@ export async function POST(request) {
         // if (User.findOne({ email }).email == email) {
         //     return new Response(JSON.stringify({ message: "User already exists" }), { status: 409 });
         // }
-        const createUser = await User.create({ email, password, files: [] });
+        const createUser = await User.create({ email, password });
         if (!createUser) {
             return new Response(JSON.stringify({ message: "An error occurred" }), { status: 500 });
         }
