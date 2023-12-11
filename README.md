@@ -1,4 +1,4 @@
-```markdown
+
 # Srcing
 
 Srcing is a cloud image storage service that allows you to generate direct image links. This project is built with Next.js and utilizes Cloudinary for image storage and MongoDB for data management.
