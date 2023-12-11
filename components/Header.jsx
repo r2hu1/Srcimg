@@ -45,7 +45,7 @@ const Header = () => {
                                             <Button className="w-full" asChild variant="ghost"><Link href="/upgrade">Upgrade</Link></Button>
                                         </li>
                                         <li>
-                                            <Button className="w-full" asChild variant="ghost"><Link href="https://rahu.eu.org">Contact Us</Link></Button>
+                                            <Button className="w-full" asChild variant="ghost"><Link href="https://rahul.eu.org">Contact Us</Link></Button>
                                         </li>
                                     </ul>
                                 </SheetClose>
