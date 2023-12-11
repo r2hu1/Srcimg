@@ -15,7 +15,7 @@ const Upgrade = () => {
                 </p>
                 <div className="flex gap-2 mt-8">
                     <Button asChild><Link href="/upload" className="flex items-center justify-center gap-1">Upload <AiOutlineEnter /></Link></Button>
-                    <Button asChild variant="outline"><a href="https://rahu.eu.org">Hire Me</a></Button>
+                    <Button asChild variant="outline"><a href="https://rahul.eu.org">Hire Me</a></Button>
                 </div>
             </div>
         </section>
