@@ -4,10 +4,16 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AiOutlineEnter } from "react-icons/ai";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
-
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
+  const { data } = useSession();
+  const router = useRouter();
+  if (data) router.push("upload");
+
+
   return (
     <section className="mt-20 mb-20">
       <div className="md:mx-40 mx-9 max-w-md">

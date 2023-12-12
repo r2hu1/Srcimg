@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { RiLoader4Fill } from "react-icons/ri";
+import validateEmail from "./emailValidator";
 
 const Signup = () => {
     const { toast } = useToast();
@@ -15,25 +16,22 @@ const Signup = () => {
     const [signing, setSigning] = useState(false);
     if (data) router.push("upload");
 
-    const validateEmail = (email) => {
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    }
+    validateEmail("newasram8ty6@gmail.com")
 
     const regesterUser = async (e) => {
         e.preventDefault();
         setSigning(true);
         const vEmail = validateEmail(e.target[0].value);
-        if (!vEmail) {
+        if (!vEmail || !e.target[0].value.includes("gmail.com") || e.target[0].value.length < 17) {
             toast({
-                title: "Error",
-                description: "Invalid Email",
+                title: "Invalid Email",
+                description: "Please enter an valid gmail address.",
                 variant: "destructive",
             });
             setSigning(false);
             return;
         }
-        if(e.target[1].value.length < 8){
+        if (e.target[1].value.length < 8) {
             toast({
                 title: "Error",
                 description: "Password must be at least 8 characters",
@@ -79,7 +77,7 @@ const Signup = () => {
                     <form className="grid gap-2 w-full" onSubmit={regesterUser}>
                         <Input type="email" placeholder="Email address" className="h-12 pl-4 text-base"></Input>
                         <Input type="password" placeholder="password" className="h-12 pl-4 text-base"></Input>
-                        <Button className="mt-4 h-12" disabled={signing}>{signing ? (<RiLoader4Fill className="w-5 h-5 animate-spin"/>) : "Signup"}</Button>
+                        <Button className="mt-4 h-12" disabled={signing}>{signing ? (<RiLoader4Fill className="w-5 h-5 animate-spin" />) : "Signup"}</Button>
                         <p className="text-sm text-center mt-7">Already have an account? <Link className="text-primary hover:underline" href="/login">Login</Link></p>
                     </form>
                 </div>
