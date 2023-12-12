@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
             color="	#7c3aed"
             initialPosition={0.08}
             crawlSpeed={200}
-            height={6}
+            height={4}
             crawl={true}
             showSpinner={false}
             easing="ease"
